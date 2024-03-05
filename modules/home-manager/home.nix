@@ -6,6 +6,7 @@
     ./zsh/zsh.nix
     ./git.nix
     ./ssh.nix
+    ./yubikey.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
