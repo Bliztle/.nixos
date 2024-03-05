@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 let
-  cfg-path = "~/.config/git";
+  cfg-path = ".config/git";
 in
 {
   options = {};
@@ -28,15 +28,11 @@ in
         "remote \"origin\"" = {
           prune = "true";
         };
-        # "includeIf \"gitdir:~/work/caretaker/\"" = {
-        #   path = "~/.config/git/caretaker.gitconfig";
-        # };
       };
 
-      # includes = [
-      #   # { path = "${cfg-path}/includeif"; }
-      #   { path = "~/.config/git/includeif"; }
-      # ];
+      includes = [
+        { path = "~/${cfg-path}/includeif"; }
+      ];
     };
 
     programs.gh = {
@@ -44,21 +40,18 @@ in
       gitCredentialHelper.enable = false;
     };
 
-    # home.file."${cfg-path}/includeif".text = ''
-    home.file."~/.config/git/includeif".text = ''
+    home.file."${cfg-path}/includeif".text = ''
     [includeIf "gitdir:~/work/caretaker/"]
 	    path = ~/.config/git/caretaker.gitconfig
     '';
 
     # Gitdir included configuration
-    # home.file."${cfg-path}/caretaker.gitconfig".text = ''
-    home.file."~/.config/git/caretaker.gitconfig".text = ''
+    home.file."${cfg-path}/caretaker.gitconfig".text = ''
       [user]
         name = Asbjørn Rysgaard Eriksen
         email = are@caretaker.dk
 
       [core]
-        # ssh-keygen -t rsa-sha2-512 -f ~/.ssh/id_rsa_sha2_512"
         sshCommand = ssh -i ~/.ssh/id_rsa_sha2_512
     '';
   };

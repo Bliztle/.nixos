@@ -183,6 +183,7 @@
     obsidian-wayland
     # obsidian
     discord
+    cmatrix
 
     # hyprland
     xdg-desktop-portal-gtk
