@@ -31,13 +31,13 @@ in
 	      ];
   
         # See https://wiki.hyprland.org/Configuring/Monitors/
-        # monitor=",preferred,auto,auto";
-        monitor = [
-          "HDMI-A-1,1920x1080@60,2680x1440,1" # Asus
-          "DP-1,1920x1080@60,0x360,1" # Omen
-          "DP-2,3440x1440@60,1920x0,1" # Wide AOC
-          "DP-3,1920x1080@60,5360x0,1,transform,1" # Regular AOC
-        ];
+        monitor=",preferred,auto,auto";
+        # monitor = [
+        #   "HDMI-A-1,1920x1080@60,2680x1440,1" # Asus
+        #   "DP-1,1920x1080@60,0x360,1" # Omen
+        #   "DP-2,3440x1440@60,1920x0,1" # Wide AOC
+        #   "DP-3,1920x1080@60,5360x0,1,transform,1" # Regular AOC
+        # ];
         
         # Source a file (multi-file configs)
         # source = ~/.config/hypr/myColors.conf

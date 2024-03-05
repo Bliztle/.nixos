@@ -12,13 +12,13 @@
     ];
 
   # GDM for login. SDDM caused issues after entering credentials
-  services.xserver.enable = true;
-  services.xserver.displayManager = {
-    gdm = {
-      enable = true;
-      wayland = true;
-    };
-  };
+  #services.xserver.enable = true;
+  #services.xserver.displayManager = {
+  #  gdm = {
+  #    enable = true;
+  #    wayland = true;
+  #  };
+  #};
 
   # Zsh. Configured in home manager
   users.defaultUserShell = pkgs.zsh;
