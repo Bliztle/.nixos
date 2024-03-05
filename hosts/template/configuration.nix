@@ -13,7 +13,7 @@ in
   imports =
     [ # Include the results of the hardware scan
       ./hardware-configuration.nix
-      ../../modules/nixos/root-configuration.nix
+      ../../modules/nixos/configuration.nix
     ];
   
   # Main user
@@ -29,7 +29,7 @@ in
   };
 
   networking.hostName = "nixos"; # Define your hostname.
-
+  
   # Configure console keymap
   console.keyMap = "dk-latin1";
 
