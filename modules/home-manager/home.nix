@@ -3,14 +3,14 @@
 {
   imports = [
     ./hyprland.nix
-    ./zsh.nix
-    ./git/git.nix
+    ./zsh/zsh.nix
+    ./git.nix
     ./ssh.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "bliztle";
-  home.homeDirectory = "/home/bliztle";
+#   home.username = "bliztle";
+#   home.homeDirectory = "/home/bliztle";
 
 
   # This value determines the Home Manager release that your configuration is
@@ -20,17 +20,17 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+#   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+#   home.packages = [
  
-  ];
+#   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
+#   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -42,7 +42,7 @@
       # org.gradle.daemon.idletimeout=3600000
       # # This is a gradle config comment
     # '';
-  };
+#   };
 
   # TODO: Figure out how to config this automatically
   # TODO: Currently manually set in browser

@@ -1,7 +1,0 @@
-[user]
-	name = Asbjørn Rysgaard Eriksen
-	email = are@caretaker.dk
-
-[core]
-	# ssh-keygen -t rsa-sha2-512 -f ~/.ssh/id_rsa_sha2_512"
-	sshCommand = ssh -i ~/.ssh/id_rsa_sha2_512

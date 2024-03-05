@@ -7,22 +7,21 @@
 {
   imports =
     [ # Include the results of the hardware scan
-      ./hardware-configuration.nix
       ./main-user.nix
       inputs.home-manager.nixosModules.default
     ];
   
   # Main user
-  main-user.enable = true;
-  main-user.userName = "bliztle";
+  # main-user.enable = true;
+  # main-user.userName = "bliztle";
 
   # Home manager
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "bliztle" = import ./home.nix;
-    };
-  };
+  # home-manager = {
+  #   extraSpecialArgs = {inherit inputs;};
+  #   users = {
+  #     "bliztle" = import ./home.nix;
+  #   };
+  # };
 
   # GDM for login. SDDM caused issues after entering credentials
   services.xserver.enable = true;
@@ -49,7 +48,6 @@
     login.u2fAuth = true;
     sudo.u2fAuth = true;
     polkit-1.u2fAuth = true;
-    # sddm.u2fAuth = true;
   };
   security.polkit = {
     enable = true;
@@ -68,7 +66,7 @@
       };
   };
 
-  # Hyprland for nvidia
+  # Hyprland
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -92,7 +90,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -130,7 +128,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "dk-latin1";
+  # console.keyMap = "dk-latin1";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -242,6 +240,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  # system.stateVersion = "23.11"; # Did you read the comment?
 
 }

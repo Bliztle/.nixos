@@ -23,13 +23,17 @@
     in
     {
     
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      nixosConfigurations = {
+
+        default = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [ 
-            ./configuration.nix
+            # ./hosts/desktop/configuration.nix
+            ./hosts/desktop/configuration.nix
+            # /home/bliztle/.nixos/hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };
-
+      };
     };
 }
