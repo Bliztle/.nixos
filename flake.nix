@@ -25,12 +25,18 @@
     
       nixosConfigurations = {
 
-        default = nixpkgs.lib.nixosSystem {
+        desktop = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
-          modules = [ 
-            # ./hosts/desktop/configuration.nix
+          modules = [
             ./hosts/desktop/configuration.nix
-            # /home/bliztle/.nixos/hosts/desktop/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
+
+        zenbook = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./hosts/zenbook/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };
