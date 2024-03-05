@@ -163,9 +163,7 @@ in
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = [
           "$mainMod, RETURN, exec, $terminal"
-          # "$mainMod, SHIFT+Q, killactive,"
-          "$mainMod, Q, killactive,"
-          # "$mainMod, C, killactive,"
+          "$mainMod SHIFT, Q, killactive,"
           "$mainMod, M, exit,"
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
