@@ -153,7 +153,7 @@ in
         # Example windowrule v1
         # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-        windowrulev2 = "nomaximizerequest, class:.*"; # You'll probably like this.
+        # windowrulev2 = "nomaximizerequest, class:.*"; # You'll probably like this.
         
         
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
