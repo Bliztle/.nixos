@@ -23,6 +23,7 @@ in
   # Home manager
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
+    useGlobalPkgs = true;
     users = {
       "${userinfo.username}" = import ./home.nix;
     };

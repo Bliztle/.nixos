@@ -57,7 +57,7 @@
   # Hyprland
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     xwayland.enable = true;
   };
 
@@ -72,7 +72,7 @@
     # Opengl
     opengl.enable = true;
     # Most wayland compositors need this
-    nvidia.modesetting.enable = true;
+    # nvidia.modesetting.enable = true;
   };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -148,7 +148,7 @@
     kitty # Maybe try alacritty in the future
     # firefox
     librewolf
-    vscode
+    # vscode
     git
     github-cli
     pam_u2f
