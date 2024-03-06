@@ -7,6 +7,10 @@ let
       ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
       ${pkgs.mako}/bin/mako &
     '';
+
+    grim = "${pkgs.grim}/bin/grim";
+    slurp = "${pkgs.slurp}/bin/slurp";
+    swappy = "${pkgs.swappy}/bin/swappy";
 in
 {
   options = {
@@ -46,6 +50,7 @@ in
         "$terminal" = "kitty";
         "$fileManager" = "dolphin";
         "$menu" = "rofi -show drun -show-icons";
+        "$screenshot" = "${grim} -g \"$(${slurp})\" - | ${swappy} -f -";
         
         # Some default env vars.
         env = [
@@ -168,7 +173,8 @@ in
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
           "$secondMod, SPACE, exec, $menu"
-          "$mainMod, P, pseudo, # dwindle"
+          # "$mainMod, P, pseudo, # dwindle"
+          "$mainMod, P, exec, $screenshot"
           "$mainMod, J, togglesplit, # dwindle"
         
         # Move focus with mainMod + arrow keys
