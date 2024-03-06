@@ -11,6 +11,7 @@ in
       enable = true;
       userName = "Bliztle";
       userEmail = "asbjoern.r.e@gmail.com";
+      delta.enable = true;
 
       extraConfig = {
         init = {
