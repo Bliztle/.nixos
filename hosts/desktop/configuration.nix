@@ -5,6 +5,7 @@
 { config, pkgs, inputs, ... }:
 
 let
+  nix_modules = "../../modules/nixos";
   userinfo = {
     username = "bliztle";
   };
@@ -13,6 +14,7 @@ in
   imports =
     [ # Include the results of the hardware scan
       ./hardware-configuration.nix
+      # "${nix_modules}/configuration.nix"
       ../../modules/nixos/configuration.nix
     ];
   
@@ -28,7 +30,7 @@ in
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "desktop"; # Define your hostname.
   
   # Configure console keymap
   console.keyMap = "dk-latin1";

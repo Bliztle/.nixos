@@ -31,6 +31,12 @@
         }
       ];
 
+      sessionVariables = {
+        EDITOR = "nvim";
+        SHELL = "zsh";
+        XDG_CONFIG_DIR = "$HOME/.config";
+      };
+
       shellAliases = {
         c = "clear";
         p = "${pkgs.python3}/bin/python3";
