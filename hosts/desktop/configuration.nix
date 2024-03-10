@@ -14,13 +14,23 @@ in
   imports =
     [ # Include the results of the hardware scan
       ./hardware-configuration.nix
-      # "${nix_modules}/configuration.nix"
       ../../modules/nixos/configuration.nix
     ];
   
   # Main user
   main-user.enable = true;
   main-user.userName = userinfo.username;
+
+  custom.unstable.enable = true;
+  custom.nvidia.enable = true;
+
+  custom.displaymanager.enable = true;
+  custom.displaymanager.gdm.enable = true;
+
+  custom.security = {
+    enable = true;
+    yubico.u2f = true;
+  };
 
   # Home manager
   home-manager = {

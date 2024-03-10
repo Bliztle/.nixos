@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, inputs, ... }:
 
 let
     startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
@@ -11,6 +11,7 @@ let
     grim = "${pkgs.grim}/bin/grim";
     slurp = "${pkgs.slurp}/bin/slurp";
     swappy = "${pkgs.swappy}/bin/swappy";
+    playerctl = "${pkgs.playerctl}/bin/playerctl";
 in
 {
   options = {
@@ -28,6 +29,9 @@ in
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
+      # enableNvidiaPatches = true;
+      xwayland.enable = true;
+      package = lib.mkIf config.custom.unstable.enable inputs.hyprland.packages."${pkgs.system}".hyprland;
 
       settings = {
         exec-once = [
@@ -160,7 +164,20 @@ in
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
         # windowrulev2 = "nomaximizerequest, class:.*"; # You'll probably like this.
         
-        
+        /*
+          Binds are configured with the following flags appended to the bind command
+
+          l -> locked, aka. works also when an input inhibitor (e.g. a lockscreen) is active.
+          r -> release, will trigger on release of a key.
+          e -> repeat, will repeat when held.
+          n -> non-consuming, key/mouse events will be passed to the active window in addition to triggering the dispatcher.
+          m -> mouse, see below
+          t -> transparent, cannot be shadowed by other binds.
+          i -> ignore mods, will ignore modifiers.
+
+          see https://wiki.hyprland.org/Configuring/Binds/#bind-flags
+        */
+
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";
         "$secondMod" = "ALT";
@@ -214,11 +231,27 @@ in
         # Scroll through existing workspaces with mainMod + scroll
           "$mainMod, mouse_down, workspace, e+0"
           "$mainMod, mouse_up, workspace, e-2"
+
+        # Media controls
+          ", XF86AudioPlay, exec, ${playerctl} play-pause"
+          ", XF86AudioNext, exec, ${playerctl} next"
+          ", XF86AudioPrev, exec, ${playerctl} previous"
         ];
         # Move/resize windows with mainMod + LMB/RMB and dragging
         bindm = [
           "$mainMod, mouse:271, movewindow"
           "$mainMod, mouse:272, resizewindow"
+        ];
+
+        
+        bindel = [
+          # Audio keys
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ];
+
+        bindl = [
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ];
       };
     };

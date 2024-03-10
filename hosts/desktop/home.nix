@@ -5,17 +5,22 @@ let
 in
 {
   imports = [
-    ../../modules/home-manager/hyprland.nix
-    ../../modules/home-manager/zsh/zsh.nix
-    ../../modules/home-manager/git.nix
-    ../../modules/home-manager/ssh.nix
-    ../../modules/home-manager/yubikey.nix
-    ../../modules/home-manager/xdg.nix
+    ../../modules/home-manager/home.nix
+    # ../../modules/home-manager/hyprland.nix
+    # ../../modules/home-manager/zsh/zsh.nix
+    # ../../modules/home-manager/git.nix
+    # ../../modules/home-manager/ssh.nix
+    # ../../modules/home-manager/yubikey.nix
+    # ../../modules/home-manager/applications.nix
+    # ../../modules/home-manager/xdg.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "bliztle";
   home.homeDirectory = "/home/bliztle";
+
+  custom.nvidia.enable = true;
+  custom.unstable.enable = true;
 
 
   # This value determines the Home Manager release that your configuration is
@@ -40,5 +45,5 @@ in
   home.sessionVariables = { };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 }
