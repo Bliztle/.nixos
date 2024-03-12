@@ -25,15 +25,6 @@ in
     ];
 
   config = {
-
-    services.xserver.enable = true;
-    services.xserver.displayManager = {
-      # gdm = lib.mkIf cfg.gdm.enable {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
   
     # SSH
     programs.ssh = {
@@ -50,7 +41,7 @@ in
   
     environment.sessionVariables = {
       # Prevent cursor becoming invisible
-      WLR_NO_HARDWARE_CURSORS = "1"; # This doesn't work properly
+      WLR_NO_HARDWARE_CURSORS = lib.mkIf cfg.nvidia.enable "1"; # This doesn't work properly
       # Hint electron apps to use wayland
       NIXOS_OZONE_WL = "1";
     };
@@ -60,7 +51,7 @@ in
       opengl.enable = true;
       # Most wayland compositors need this
       # nvidia.modesetting.enable = cfg.nvidia.enable;
-      nvidia.modesetting.enable = true;
+      nvidia.modesetting.enable = cfg.nvidia.enable;
     };
     # Bootloader.
     boot.loader.systemd-boot.enable = true;

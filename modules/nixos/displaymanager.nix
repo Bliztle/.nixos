@@ -10,16 +10,14 @@ in
     gdm.enable = lib.mkEnableOption "use gdm";
   };
 
-  # config = lib.mkIf cfg.enable {
-  config = {
-    # services.xserver.enable = true;
+  config = lib.mkIf cfg.enable {
+    services.xserver.enable = true;
 
-    # services.xserver.displayManager = {
-    #   # gdm = lib.mkIf cfg.gdm.enable {
-    #   gdm = {
-    #     enable = true;
-    #     wayland = true;
-    #   };
-    # };
+    services.xserver.displayManager = {
+      gdm = lib.mkIf cfg.gdm.enable {
+        enable = true;
+        wayland = true;
+      };
+    };
   };
 }
