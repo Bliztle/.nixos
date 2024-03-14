@@ -61,12 +61,13 @@ in
     };
   
     ### FIDO U2FA
-    security.pam.services = lib.mkIf cfg.yubico.u2f {
+    security.pam.services = {
       # u2fa - Allow auth with yubikeys
       # see list of services with ls /etc/pam.d
-      login.u2fAuth = true;
-      sudo.u2fAuth = true;
-      polkit-1.u2fAuth = true;
+      login.enableGnomeKeyring = true;
+      login.u2fAuth = lib.mkIf cfg.yubico.u2f true;
+      sudo.u2fAuth = lib.mkIf cfg.yubico.u2f true;
+      polkit-1.u2fAuth = lib.mkIf cfg.yubico.u2f true;
     };
   
     ### Polkit. Allow applications to ask for raised permission level
@@ -84,5 +85,9 @@ in
           TimeoutStopSec = 10;
         };
     };
+
+    programs.seahorse.enable = true;
+    # security.pam.services.login.enableGnomeKeyring = true;
+    services.gnome.gnome-keyring.enable = true;
   };
 }

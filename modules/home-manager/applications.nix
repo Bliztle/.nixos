@@ -18,8 +18,16 @@
       }) 
     ];
 
+    home.file.".vscode/argv.json".text = ''
+      {
+        "enable-crash-reporter": false,
+        "password-store": "gnome-libsecret"
+      }
+    '';
+
     home.packages = with pkgs; [
         obsidian-wayland
+        # libsecret
     ];
   };
 }
