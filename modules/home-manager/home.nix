@@ -7,12 +7,13 @@
   };
 
   imports = [
-    ./hyprland.nix
-    ./zsh/zsh.nix
-    ./git.nix
-    ./ssh.nix
     ./applications.nix
+    ./git.nix
+    ./hyprland.nix
+    ./neovim/neovim.nix
+    ./ssh.nix
     ./xdg.nix
+    ./zsh/zsh.nix
   ];
 
   config = {
