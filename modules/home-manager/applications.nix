@@ -12,6 +12,8 @@
       "electron-24.8.6" # This is required for the obsidian changes for wayland, listed below
     ];
 
+    programs.lf.enable = true;
+
     nixpkgs.overlays = [
       (final: prev: {
         obsidian-wayland = prev.obsidian.override {electron = final.electron_24;};
