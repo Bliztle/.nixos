@@ -8,6 +8,7 @@
 
   imports = [
     ./applications.nix
+    ./dev/dev.nix
     ./git.nix
     ./hyprland.nix
     ./neovim/neovim.nix

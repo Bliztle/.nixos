@@ -15,6 +15,7 @@ in
   custom.nvidia.enable = true;
   custom.unstable.enable = true;
 
+  custom.dev.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

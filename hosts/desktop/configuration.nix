@@ -27,6 +27,8 @@ in
   custom.displaymanager.enable = true;
   custom.displaymanager.gdm.enable = true;
 
+  custom.games.steam.enable = true;
+
   custom.security = {
     enable = true;
     yubico.u2f = true;

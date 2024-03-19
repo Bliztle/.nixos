@@ -17,6 +17,7 @@ in
     [ # Include the results of the hardware scan
       ./audio.nix
       ./displaymanager.nix
+      ./games.nix
       ./locale.nix
       ./main-user.nix
       ./security.nix
