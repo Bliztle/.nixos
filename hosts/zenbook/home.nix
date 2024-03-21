@@ -9,6 +9,9 @@
   home.username = "bliztle";
   home.homeDirectory = "/home/bliztle";
 
+  custom.unstable.enable = true;
+
+  custom.dev.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -26,4 +29,8 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = { };
+
+  # Env variables for this user only
+  # Defaults are set in zsh config
+  home.sessionVariables = { };
 }
