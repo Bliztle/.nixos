@@ -30,6 +30,7 @@
     home.packages = with pkgs; [
         obsidian-wayland
         # libsecret
+        libnotify
     ];
   };
 }

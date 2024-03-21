@@ -1,11 +1,16 @@
 { pkgs, lib, config, inputs, ... }:
 
 let
+    cfg = "~/.nixos/modules/home-manager/hyprland";
     startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-      ${pkgs.waybar}/bin/waybar &
+      # ${pkgs.waybar}/bin/waybar &
+      # waybar -s ~/.nixos/modules/home-manager/style.css &
+      waybar &
       ${pkgs.swww}/bin/swww init &
-      ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
-      ${pkgs.mako}/bin/mako &
+      # ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
+      # ${pkgs.mako}/bin/mako &
+      # ${pkgs.dunst}/bin/dunst &
+      dunst &
     '';
 
     grim = "${pkgs.grim}/bin/grim";
@@ -37,6 +42,8 @@ in
         exec-once = [
           "${startupScript}/bin/start"
 	      ];
+
+        source = "${cfg}/macchiato.conf";
   
         # See https://wiki.hyprland.org/Configuring/Monitors/
         # monitor=",preferred,auto,auto";
@@ -72,7 +79,11 @@ in
             follow_mouse = "1";
         
             touchpad = {
-                natural_scroll = false;
+                disable_while_typing="1";
+                natural_scroll="1";
+                clickfinger_behavior="1";
+                middle_button_emulation="0";
+                tap-to-click="1";
             };
         
             sensitivity = "0"; # -1.0 - 1.0, 0 means no modification.
@@ -81,35 +92,35 @@ in
         general = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
         
-            gaps_in = "4";
-            gaps_out = "19";
-            border_size = "1";
-            "col.active_border" = "rgba(32ccffee) rgba(00ff99ee) 45deg";
-            "col.inactive_border" = "rgba(595958aa)";
-        
-            layout = "dwindle";
-        
-            # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-            allow_tearing = false;
+            layout="dwindle";
+            sensitivity="1.0"; # for mouse cursor
+
+            gaps_in="5";
+            gaps_out="20";
+            border_size="2";
+            "col.active_border"="$teal";
+            "col.inactive_border"="$surface1";
+
+            apply_sens_to_raw="0"; # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
         };
         
         decoration = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
         
-            rounding = "9";
+            rounding = "18";
         
             blur = {
                 enabled = true;
-                size = "2";
-                passes = "0";
-                
-                vibrancy = "-1.1696";
+                size = "6";
+                passes = "2";
+                new_optimizations = true;
+                # vibrancy = "-1.1696";
             };
         
             drop_shadow = true;
-            shadow_range = "3";
-            shadow_render_power = "2";
-            "col.shadow" = "rgba(0a1a1aee)";
+            shadow_range="15";
+            "col.shadow" = "$teal";
+            "col.shadow_inactive" = "$base";
         };
         
         animations = {
@@ -117,15 +128,13 @@ in
         
             # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
         
-            bezier = "myBezier, -1.05, 0.9, 0.1, 1.05";
+            bezier = "overshot,0.13,0.99,0.29,1.1";
             
             animation = [
-              "windows, 0, 7, myBezie"
-              "windowsOut, 0, 7, default, popin 80%"
-              "border, 0, 10, default"
-              "borderangle, 0, 8, default"
-              "fade, 0, 7, default"
-              "workspaces, 0, 6, default"
+                "windows,1,4,overshot,popin"
+                "fade,1,10,default"
+                "workspaces,1,6,overshot,slide"
+                "border,1,10,default"
             ];
         };
         
@@ -133,21 +142,28 @@ in
             # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
             pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
             preserve_split = true; # you probably want this
+            force_split = false;
         };
         
         master = {
             # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
             new_is_master = true;
+            new_on_top = true;
         };
         
         gestures = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
-            workspace_swipe = false;
+            workspace_swipe = true;
+            workspace_swipe_min_speed_to_force = "5";
         };
         
         misc = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
             force_default_wallpaper = "-2"; # Set to 0 or 1 to disable the anime mascot wallpapers
+            disable_hyprland_logo = true;
+            disable_splash_rendering = true;
+            mouse_move_enables_dpms = true;
+            vfr = false;
         };
         
         # Example per-device config
@@ -163,6 +179,32 @@ in
         # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
         # windowrulev2 = "nomaximizerequest, class:.*"; # You'll probably like this.
+
+        # Window rules taken from https://github.com/1amSimp1e/dots/tree/late-night-%F0%9F%8C%83
+        windowrule = [
+          "float,Rofi"
+          "float,pavucontrol"
+          "opacity 0.92,Thunar"
+          "opacity 0.96,discord"
+          "opacity 0.9,VSCodium"
+          "opacity 0.88,obsidian"
+          "tile,librewolf"
+          "tile,spotify"
+          "opacity 1,neovim"
+          "opacity 0.8,kitty"
+        ];
+
+        windowrulev2 = [
+          "float,class:^()$,title:^(Picture in picture)$"
+          "float,class:^(brave)$,title:^(Save File)$"
+          "float,class:^(brave)$,title:^(Open File)$"
+          "float,class:^(LibreWolf)$,title:^(Picture-in-Picture)$"
+          "float,class:^(blueman-manager)$"
+          "float,class:^(org.twosheds.iwgtk)$"
+          "float,class:^(blueberry.py)$"
+          "float,class:^(xdg-desktop-portal-gtk)$"
+          "float,class:^(geeqie)$"
+        ];
         
         /*
           Binds are configured with the following flags appended to the bind command

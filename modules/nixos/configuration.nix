@@ -76,7 +76,7 @@ in
     environment.systemPackages = with pkgs; [
       sl # TUU TUUUUUUUU
       wl-clipboard
-      kitty # Maybe try alacritty in the future
+      # kitty # Maybe try alacritty in the future
       # firefox
       librewolf
       vscode
@@ -110,9 +110,9 @@ in
       # wlroots
   
       # Notifications
-      #dunt
-      mako
-      libnotify # Above depends on this
+      # dunst
+      # mako
+      # libnotify # Above depends on this
   
       swww # Wallpaper daemon
   
