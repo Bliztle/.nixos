@@ -47,6 +47,7 @@
 
         sgit = "sudo git -c \"include.path=\${XDG_CONFIG_DIR:-$HOME/.config}/git/config\" -c \"include.path=$HOME/.gitconfig\"";
         nshell = "nix-shell --command zsh -p";
+	      code = "env -u WAYLAND_DISPLAY code .nixos";
       };
 
       oh-my-zsh = {

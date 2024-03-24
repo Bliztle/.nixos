@@ -47,9 +47,31 @@ in
                 spacing = 10;
             };
             clock = {
-                format = "<span color='#bf616a'> </span>{ =%a %b %d}";
-                format-alt = "<span color='#bf616a'> </span>{ =%I =%M %p}";
-                tooltip-format = "<big>{ =%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+                # format = "<span color='#bf616a'> </span>{ =%a %b %d}";
+                format = "<span color='#bf616a'> </span>{:%H:%M}";
+                format-alt = "<span color='#bf616a'> </span>{:%A, %B %d, %Y (%R)}";
+                tooltip-format = "<tt><small>{calendar}</small></tt>";
+                calendar = {
+                  mode          = "year";
+                  mode-mon-col  = 3;
+                  weeks-pos     = "right";
+                  on-scroll     = 1;
+                  on-click-right= "mode";
+                  format = {
+                    months =     "<span color='#ffead3'><b>{}</b></span>";
+                    days =       "<span color='#ecc6d9'><b>{}</b></span>";
+                    weeks =      "<span color='#99ffdd'><b>W{}</b></span>";
+                    weekdays =   "<span color='#ffcc66'><b>{}</b></span>";
+                    today =      "<span color='#ff6699'><b><u>{}</u></b></span>";
+                  };
+                };
+                actions = {
+                  on-click-right = "mode";
+                  on-click-forward = "tz_up";
+                  on-click-backward = "tz_down";
+                  on-scroll-up = "shift_up";
+                  on-scroll-down = "shift_down";
+                };
             };
 
             cpu = {
