@@ -29,8 +29,13 @@
 
     home.packages = with pkgs; [
         obsidian-wayland
-        # libsecret
         libnotify
+        wdisplays
+        tldr
+        bat
+        ripgrep
+        fd
+        eza
     ];
   };
 }

@@ -7,11 +7,11 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
+      vimdiffAlias = true;
       withNodeJs = true;
-      # package = pkgs.neovim-nightly;
 
       plugins = with pkgs.vimPlugins; [
-      	LazyVim
+      	# LazyVim
 	      lazy-nvim
 	      nvim-treesitter
 	      nvim-treesitter.withAllGrammars # What is this dark magic?
@@ -24,15 +24,34 @@
         nvim-web-devicons # Icons for neo-tree-vim
         neo-tree-nvim
         which-key-nvim
+	      nvim-lspconfig
       ];
 
       extraPackages = with pkgs; [
-      	gcc
+      	gcc # Supposedly needed for treesitter
+        
+        # Style
         stylua
+
+        # Other 
+        editorconfig-checker
+        shellcheck
       ];
 
       extraConfig = ''
         set number relativenumber
+
+        " Move between windows with Ctrl + h/j/k/l
+        nnoremap <C-h> <C-w>h
+        nnoremap <C-j> <C-w>j
+        nnoremap <C-k> <C-w>k
+        nnoremap <C-l> <C-w>l
+
+        " Telescope keybindings
+        nnoremap <leader>ff <cmd>Telescope find_files<cr>
+        nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+        nnoremap <leader>fb <cmd>Telescope buffers<cr>
+        nnoremap <leader>fh <cmd>Telescope help_tags<cr>
       '';
 
       extraLuaConfig = ''
@@ -41,6 +60,7 @@
 
       	require("lazy").setup({
           spec = {
+            -- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
             -- Import plugins from lua/plugins
             { import = "plugins" },
           },
@@ -53,7 +73,7 @@
 	        dev = {
 	          path = "${pkgs.vimUtils.packDir config.programs.neovim.finalPackage.passthru.packpathDirs}/pack/myNeovimPackages/start",
             patterns = {
-              "nvim-telescope, nvim-treesitter"
+              "folke", "nvim-telescope", "nvim-treesitter", "nvim-neo-tree", "plenary.nvim", "nvim-web-devicons", "nui.nvim", "nvim-lspconfig", "cheatsheet.nvim"
             }
           },
 	        install = {

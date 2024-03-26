@@ -231,19 +231,23 @@ in
         bind = [
           "$mainMod, RETURN, exec, $terminal"
           "$mainMod SHIFT, Q, killactive,"
-          "$mainMod, M, exit,"
-          "$mainMod, E, exec, $fileManager"
+          "$mainMod, E, exit,"
+          # "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
           "$secondMod, SPACE, exec, $menu"
           # "$mainMod, P, pseudo, # dwindle"
           "$mainMod, P, exec, $screenshot"
-          "$mainMod, J, togglesplit, # dwindle"
+          "$mainMod CTRL, S, togglesplit, # dwindle"
         
         # Move focus with mainMod + arrow keys
           "$mainMod, left, movefocus, l"
+          "$mainMod, H, movefocus, l"
           "$mainMod, right, movefocus, r"
+          "$mainMod, L, movefocus, r"
           "$mainMod, up, movefocus, u"
+          "$mainMod, K, movefocus, u"
           "$mainMod, down, movefocus, d"
+          "$mainMod, J, movefocus, d"
         
         # Switch workspaces with mainMod + [-1-9]
           "$mainMod, 1, workspace, 1"

@@ -91,6 +91,11 @@ in
       # obsidian
       discord
       cmatrix
+
+      curl
+      (curl.overrideAttrs (oldAttrs: {
+        configureFlags = oldAttrs.configureFlags ++ ["--enable-versioned-symbols"];
+      }))
   
       # hyprland
       xdg-desktop-portal-gtk
