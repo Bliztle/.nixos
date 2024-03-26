@@ -23,8 +23,9 @@
 
 
   config = {
-    # colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-terminal-dark;
-    colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
+    # Schemes at: https://github.com/tinted-theming/base16-schemes
+    # colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
+    colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
   };

@@ -6,7 +6,7 @@ let
       # ${pkgs.waybar}/bin/waybar &
       # waybar -s ~/.nixos/modules/home-manager/style.css &
       waybar &
-      ${pkgs.swww}/bin/swww init &
+      `swww init && swww img ${cfg}/wallpapers/trees.jpg` &
       # ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
       # ${pkgs.mako}/bin/mako &
       # ${pkgs.dunst}/bin/dunst &
