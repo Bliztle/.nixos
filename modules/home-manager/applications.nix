@@ -3,8 +3,6 @@
 {
   options = { };
   config = {
-    # All configuration is done in program.zsh
-    
     # Obsidian configuration
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.permittedInsecurePackages = [
@@ -28,14 +26,33 @@
     '';
 
     home.packages = with pkgs; [
-        obsidian-wayland
-        libnotify
+        # Applications
+        obsidian-wayland # Uses overlay to force electron 24
+        discord
+        librewolf
+        firefox
+        spotify
+        vscode # Change to programs.vscode and set package to newest git version
+        # thunderbird -- Look into using nix' email settings
+
+        # Tools
+        wl-clipboard
         wdisplays
         tldr
         bat
         ripgrep
         fd
         eza
+        # git        # This should already be accessible from git.nix
+        # github-cli # -||-
+
+
+        # Misc
+        sl # TUU TUUUUUUUU
+
+
+        # Misc dependencies
+        libnotify
     ];
   };
 }

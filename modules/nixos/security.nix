@@ -47,11 +47,17 @@ in
             # For each key:
             pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
             
-              
+              Aalborg Universitet:YP50RV@student.aau.dk
+              nl75vdmmfpgzpmxt
     */
   
+    # Enable options for yubi auth desktop
+    services.udev.packages = with pkgs; [ yubikey-personalization ];
+    services.pcscd.enable = true;
+    environment.systemPackages = with pkgs; [ yubioath-flutter ];
+
+
     ### HMAC challenge response
-    services.pcscd.enable = cfg.yubico.challenge;
     security.pam.yubico = lib.mkIf cfg.yubico.challenge {
       enable = true;
       debug = true;
@@ -61,13 +67,17 @@ in
     };
   
     ### FIDO U2FA
+    security.pam.u2f = lib.mkIf cfg.yubico.u2f {
+      enable = true;
+      debug = false; # Set true to investigate issues
+      control = "sufficient"; # default
+      cue = true;
+    };
+
     security.pam.services = {
-      # u2fa - Allow auth with yubikeys
-      # see list of services with ls /etc/pam.d
+      # Attempt to unlock gnome keyring on login
+      # Does not work when authenticated with yubikey
       login.enableGnomeKeyring = true;
-      login.u2fAuth = lib.mkIf cfg.yubico.u2f true;
-      sudo.u2fAuth = lib.mkIf cfg.yubico.u2f true;
-      polkit-1.u2fAuth = lib.mkIf cfg.yubico.u2f true;
     };
   
     ### Polkit. Allow applications to ask for raised permission level

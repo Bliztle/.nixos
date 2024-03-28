@@ -74,33 +74,12 @@ in
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
-      sl # TUU TUUUUUUUU
-      wl-clipboard
-      # kitty # Maybe try alacritty in the future
-      # firefox
-      librewolf
-      vscode
-      git
-      github-cli
-      # pam_u2f
-      # home-manager
-      spotify
       polkit_gnome
-      # gnome_keyring # Set this up at some point
-      # obsidian-wayland
-      # obsidian
-      discord
-      cmatrix
-
-      curl
-      (curl.overrideAttrs (oldAttrs: {
-        configureFlags = oldAttrs.configureFlags ++ ["--enable-versioned-symbols"];
-      }))
   
       # hyprland
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
-      xwayland
+      xwayland # Likely not needed, as it is included in hyprland by default
       # waybar and override for it
       meson
       waybar
@@ -120,9 +99,6 @@ in
       # libnotify # Above depends on this
   
       swww # Wallpaper daemon
-  
-      # Caretaker
-      teams-for-linux
     ];
   
     fonts.packages = with pkgs; [

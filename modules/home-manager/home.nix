@@ -15,6 +15,7 @@
     ./kitty/kitty.nix
     ./neovim/neovim.nix
     ./waybar/waybar.nix
+    ./work
     ./ssh.nix
     ./xdg.nix
     ./zsh/zsh.nix
