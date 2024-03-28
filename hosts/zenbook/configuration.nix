@@ -19,6 +19,17 @@ in
   main-user.enable = true;
   main-user.userName = userinfo.username;
 
+  # Do not use unstable releases
+  custom.unstable.enable = false;
+
+  custom.displaymanager.enable = true;
+  custom.displaymanager.gdm.enable = true;
+
+  custom.security = {
+    enable = true;
+    yubico.u2f = true;
+  };
+
   # Home manager
   home-manager = {
     extraSpecialArgs = {inherit inputs;};

@@ -11,7 +11,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    # home-manager.url = github:nix-community/home-manager/release-23.11;
+    home-manager.url = github:nix-community/home-manager/release-23.11;
     home-manager-unstable.url = github:nix-community/home-manager;
 
     nix-colors.url = "github:misterio77/nix-colors";
@@ -38,7 +38,7 @@
           modules = [
             ./hosts/zenbook/configuration.nix
             ./modules/stable.nix
-            inputs.home-manager.nixosModules.default
+            home-manager.nixosModules.default
           ];
         };
       };

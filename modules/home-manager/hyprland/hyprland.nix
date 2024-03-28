@@ -52,6 +52,7 @@ in
           "DP-1,1920x1080@60,0x360,1" # Omen
           "DP-2,3440x1440@60,1920x0,1" # Wide AOC
           "DP-3,1920x1080@60,5360x0,1,transform,1" # Regular AOC
+          "eDP-1,1920x1080@60,0x0,1" # Laptop
         ];
         
         # Source a file (multi-file configs)
@@ -98,8 +99,8 @@ in
             gaps_in="5";
             gaps_out="20";
             border_size="2";
-            "col.active_border"="$teal";
-            "col.inactive_border"="$surface1";
+            # "col.active_border"="$teal";
+            # "col.inactive_border"="$surface1";
 
             apply_sens_to_raw="0"; # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
         };
@@ -119,8 +120,8 @@ in
         
             drop_shadow = true;
             shadow_range="15";
-            "col.shadow" = "$teal";
-            "col.shadow_inactive" = "$base";
+            # "col.shadow" = "$teal";
+            # "col.shadow_inactive" = "$base";
         };
         
         animations = {

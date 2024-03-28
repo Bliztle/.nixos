@@ -47,6 +47,9 @@
 
         sgit = "sudo git -c \"include.path=\${XDG_CONFIG_DIR:-$HOME/.config}/git/config\" -c \"include.path=$HOME/.gitconfig\"";
         nshell = "nix-shell --command zsh -p";
+
+        # Alias required on stable channel
+        code = if config.custom.unstable.enable then "code" else "env -u WAYLAND_DISPLAY code";
       };
 
       oh-my-zsh = {
