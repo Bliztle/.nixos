@@ -52,7 +52,7 @@
 
 
         # Misc dependencies
-        libnotify
+        libnotify # Required for notifications (dunst)
     ];
   };
 }
