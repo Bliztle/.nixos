@@ -9,6 +9,7 @@
   imports = [
     ./applications.nix
     ./dev/dev.nix
+    ./email.nix
     ./git.nix
     ./dunst/dunst.nix
     ./hyprland/hyprland.nix
