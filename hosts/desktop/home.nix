@@ -1,16 +1,12 @@
 { config, pkgs, inputs, ... }:
 
-let
-  hm_modules = "../../modules/home-manager";
-in
 {
   imports = [
-    ../../modules/home-manager/home.nix
+    ../../modules/unstable-hm.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "bliztle";
-  home.homeDirectory = "/home/bliztle";
 
   custom.nvidia.enable = true;
   custom.unstable.enable = true;

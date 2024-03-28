@@ -14,14 +14,12 @@ in
   imports =
     [ # Include the results of the hardware scan
       ./hardware-configuration.nix
-      ../../modules/nixos/configuration.nix
     ];
   
   # Main user
   main-user.enable = true;
   main-user.userName = userinfo.username;
 
-  custom.unstable.enable = true;
   custom.nvidia.enable = true;
 
   custom.displaymanager.enable = true;

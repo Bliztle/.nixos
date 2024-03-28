@@ -11,14 +11,13 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    home-manager = {
-      url = github:nix-community/home-manager;
-    };
+    # home-manager.url = github:nix-community/home-manager/release-23.11;
+    home-manager-unstable.url = github:nix-community/home-manager;
 
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, ... }@inputs:
     {
     
       nixosConfigurations = {
@@ -28,7 +27,8 @@
           specialArgs = {inherit inputs;};
           modules = [
             ./hosts/desktop/configuration.nix
-            inputs.home-manager.nixosModules.default
+            ./modules/unstable.nix
+            home-manager-unstable.nixosModules.default
           ];
         };
 
@@ -37,6 +37,7 @@
           specialArgs = {inherit inputs;};
           modules = [
             ./hosts/zenbook/configuration.nix
+            ./modules/stable.nix
             inputs.home-manager.nixosModules.default
           ];
         };

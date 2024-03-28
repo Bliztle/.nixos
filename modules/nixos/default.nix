@@ -22,7 +22,7 @@ in
       ./main-user.nix
       ./security.nix
       ./shell.nix
-      inputs.home-manager.nixosModules.default
+      inputs.home-manager-unstable.nixosModules.default
     ];
 
   config = {

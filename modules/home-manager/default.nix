@@ -19,7 +19,7 @@
     ./ssh.nix
     ./xdg.nix
     ./zsh/zsh.nix
-    inputs.nix-colors.homeManagerModules.default # use tokyo-night-terminal-dark.yaml
+    inputs.nix-colors.homeManagerModules.default # Nix colors import
   ];
 
 
