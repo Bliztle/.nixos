@@ -46,9 +46,6 @@ in
             mkdir -p ~/.config/Yubico
             # For each key:
             pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
-            
-              Aalborg Universitet:YP50RV@student.aau.dk
-              nl75vdmmfpgzpmxt
     */
   
     # Enable options for yubi auth desktop
