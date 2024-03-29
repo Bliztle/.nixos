@@ -33,6 +33,7 @@
         firefox
         spotify
         vscode # Change to programs.vscode and set package to newest git version
+        bitwarden
         # thunderbird -- Look into using nix' email settings
 
         # Tools
