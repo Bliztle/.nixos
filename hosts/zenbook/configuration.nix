@@ -38,7 +38,7 @@ in
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "zenbook"; # Define your hostname.
   
   # Configure console keymap
   console.keyMap = "dk-latin1";
