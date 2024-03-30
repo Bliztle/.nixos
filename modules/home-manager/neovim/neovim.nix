@@ -15,6 +15,7 @@
 	      lazy-nvim
 	      nvim-treesitter
 	      nvim-treesitter.withAllGrammars # What is this dark magic?
+	      nvim-treesitter-context
         auto-pairs
         nui-nvim # nvim ui components used by neo-tree-nvim
         plenary-nvim # nvim lua library used by telescope and neo-tree-nvim
