@@ -1,5 +1,10 @@
 [
+    ./completions.lua
+    ./enable.lua
+    ./git.lua
     ./lspconfig.lua
+    ./lualine.lua
     ./telescope.lua
     ./treesitter.lua
+    ./treesitter-context.lua
 ]

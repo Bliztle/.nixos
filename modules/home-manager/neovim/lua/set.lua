@@ -1,3 +1,7 @@
+local nnoremap = function(lhs, rhs)
+    vim.keymap.set('n', lhs, rhs, { noremap = true })
+end
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -17,4 +21,9 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 vim.opt.termguicolors = true
+
+nnoremap("<C-d", "<C-d>zz")
+nnoremap("<C-u", "<C-u>zz")
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
 

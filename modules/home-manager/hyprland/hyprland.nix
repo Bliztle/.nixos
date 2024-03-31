@@ -227,7 +227,7 @@ in
         
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = [
-          "$mainMod, RETURN, exec, $terminal"
+          "$mainMod, RETURN, exec, $terminal -d `pwd`"
           "$mainMod SHIFT, Q, killactive,"
           "$mainMod, E, exit,"
           # "$mainMod, E, exec, $fileManager"
