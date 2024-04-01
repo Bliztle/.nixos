@@ -4,6 +4,8 @@ end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.opt.clipboard = "unnamedplus"
+vim.cmd.colorscheme "catppuccin-mocha"
 
 vim.keymap.set('n', '<C-h>', '<C-w>h', {})
 vim.keymap.set('n', '<C-j>', '<C-w>j', {})
@@ -26,4 +28,3 @@ nnoremap("<C-d", "<C-d>zz")
 nnoremap("<C-u", "<C-u>zz")
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
-

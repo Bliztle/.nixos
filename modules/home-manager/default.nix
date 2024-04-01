@@ -4,6 +4,9 @@
   options.custom = {
     unstable.enable = lib.mkEnableOption "enable configuration from unstable";
     nvidia.enable = lib.mkEnableOption "enable nvidia specific options";
+    colorScheme = lib.mkOption { 
+      default = "catppuccin-mocha";
+    };
   };
 
   imports = [
@@ -27,7 +30,7 @@
   config = {
     # Schemes at: https://github.com/tinted-theming/base16-schemes
     # colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
-    colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+    colorScheme = inputs.nix-colors.colorSchemes.${config.custom.colorScheme};
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
   };

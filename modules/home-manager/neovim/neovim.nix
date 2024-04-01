@@ -27,6 +27,7 @@
           nvim-web-devicons # Icons for neo-tree-vim and lualine-nvim
           neo-tree-nvim
           which-key-nvim
+          catppuccin-nvim # Color scheme 
 
           # Git integration
           vim-fugitive
