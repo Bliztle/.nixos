@@ -23,7 +23,9 @@ lspconfig.rust_analyzer.setup {
 lspconfig.tsserver.setup {}
 
 -- Global mappings
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>dn', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>dN', vim.diagnostic.open_float)
 
 -- Auto format on save
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]

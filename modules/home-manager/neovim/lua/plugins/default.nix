@@ -1,5 +1,6 @@
 [
     ./completions.lua
+    ./dap.lua
     ./enable.lua
     ./git.lua
     ./lspconfig.lua
