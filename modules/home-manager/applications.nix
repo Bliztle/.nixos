@@ -34,6 +34,7 @@
         spotify
         vscode # Change to programs.vscode and set package to newest git version
         bitwarden
+        expressvpn
         # thunderbird -- Look into using nix' email settings
 
         # Tools

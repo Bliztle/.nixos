@@ -22,6 +22,7 @@ in
       ./main-user.nix
       ./security.nix
       ./shell.nix
+      ./vpn.nix
     ];
 
   config = {

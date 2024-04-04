@@ -28,6 +28,7 @@
           neo-tree-nvim
           which-key-nvim
           catppuccin-nvim # Color scheme 
+          vim-sleuth # Auto detect tabs
 
           # Git integration
           vim-fugitive
