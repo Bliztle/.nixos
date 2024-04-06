@@ -25,6 +25,7 @@ in
   custom.displaymanager.enable = true;
   custom.displaymanager.gdm.enable = true;
   custom.vpn.enable = true;
+  custom.games.steam.enable = true;
 
   custom.security = {
     enable = true;
