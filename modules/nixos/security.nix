@@ -17,6 +17,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    programs.gnupg.agent = {
+      enable = true;
+      # enableSSHSupport = true;
+    };
   
     /*
       Yubico configuration
@@ -51,7 +56,15 @@ in
     # Enable options for yubi auth desktop
     services.udev.packages = with pkgs; [ yubikey-personalization ];
     services.pcscd.enable = true;
-    environment.systemPackages = with pkgs; [ yubioath-flutter ];
+    environment.systemPackages = with pkgs; [
+      yubioath-flutter 
+      yubikey-personalization
+      yubikey-personalization-gui
+      yubico-pam
+      yubikey-manager
+      yubikey-manager-qt
+      pam_u2f # OTP pamu2fcfg
+    ];
 
 
     ### HMAC challenge response
@@ -60,7 +73,7 @@ in
       debug = true;
       control = "sufficient";
       mode = "challenge-response";
-      id = [ "18298980" ];
+      id = [ "18298980" "18298984" ];
     };
   
     ### FIDO U2FA

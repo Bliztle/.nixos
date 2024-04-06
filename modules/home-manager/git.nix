@@ -9,9 +9,15 @@ in
     # Normal git configuration
     programs.git = {
       enable = true;
-      userName = "Bliztle";
-      userEmail = "asbjoern.r.e@gmail.com";
+      userName = "Asbjørn Rysgaard Eriksen";
+      userEmail = "mail@bliztle.com";
       delta.enable = true;
+
+      signing = {
+        key = "654D56C64D41EAB7!";
+        signByDefault = true;
+        gpgPath = "${pkgs.gnupg}/bin/gpg";
+      };
 
       extraConfig = {
         init = {
@@ -23,6 +29,9 @@ in
         core = {
           editor = "nvim";
         };
+        # commit = {
+        #   gpgsign = "true";
+        # };
         pager = {
           branch = "false";
         };
