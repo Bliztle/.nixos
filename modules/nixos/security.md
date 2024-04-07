@@ -1,0 +1,182 @@
+# Secuity
+
+Documentation for the `secuity.nix` module of my nixos configuration.
+
+## GnuPG
+
+GnuPG is set up with an enabled agent for use with yubikeys, to sign commits or (d)ecrypt files.
+The same keys are set up on both Float and Station keys, and preregistered in `git.nix` to be used for signing, and to dissallow making unsigned commits.
+
+To register a key with a new host:
+
+```sh
+gpg --import publickey.gpg
+```
+
+And then ensure the key is correctly registered:
+
+```sh
+gpg --card-status
+```
+
+You should now be able to use the keys.
+
+### Encrypting with GPG
+
+to encrypt a file:
+
+```sh
+gpg --encrypt --output <output-file>.gpg --recipient mail@bliztle.com <input-file>
+```
+
+And decrypt:
+
+```sh
+gpg --decrypt --output <output-file> <input-file>.gpg
+```
+
+### Public key
+
+```
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=6t6K
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+## Yubikey 2FA
+
+Implementet below are 2 options for yubikey authentication
+  - HMAC Challenge response
+  - FIDO U2F
+
+For general use, U2F allows more configuration for which services should utilize it, but unlike HMAC challenge response, it can not used for LUKS partition decryption
+  
+### Setting up:
+  
+#### HMAC challenge response (DEPRECATED. KEY SLOT 2 IS USED FOR GPG CHALRESP)
+
+```sh
+# Get ID to add below
+ykinfo -s
+  
+# If key is not set up with chal-resp on slot 2, run:
+ykman otp chalresp --touch --generate 2
+# Register key
+ykpamcfg -2 -v
+```
+
+#### FIDO U2FA
+
+```sh
+# Be default, pam_u2f checks ~/.config/Yubico/u2f_keys
+mkdir -p ~/.config/Yubico
+# For each key:
+pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
+```
+  
