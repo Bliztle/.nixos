@@ -10,7 +10,6 @@ in
 {
   options.custom = {
     unstable.enable = lib.mkEnableOption "enable configuration from unstable";
-    nvidia.enable = lib.mkEnableOption "enable nvidia specific options";
   };
 
   imports =
@@ -20,6 +19,7 @@ in
       ./games.nix
       ./locale.nix
       ./main-user.nix
+      ./nvidia.nix
       ./security.nix
       ./shell.nix
       ./vpn.nix
@@ -52,7 +52,7 @@ in
       opengl.enable = true;
       # Most wayland compositors need this
       # nvidia.modesetting.enable = cfg.nvidia.enable;
-      nvidia.modesetting.enable = cfg.nvidia.enable;
+      # nvidia.modesetting.enable = cfg.nvidia.enable;
     };
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
