@@ -11,7 +11,7 @@ in
         shellIntegration.enableZshIntegration = true;
         font = {
           name = "JetBrainsMono Nerd Font";
-          size = 13;
+          size = 12;
         };
         settings = {
           # The string below written as nix confugration
