@@ -39,6 +39,7 @@
 
       shellAliases = {
         c = "clear";
+        g = "git";
         p = "${pkgs.python3}/bin/python3";
         cat = "${pkgs.bat}/bin/bat";
         grep = "${pkgs.ripgrep}/bin/rg";

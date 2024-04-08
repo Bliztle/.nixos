@@ -42,7 +42,7 @@ in
   
     environment.sessionVariables = {
       # Prevent cursor becoming invisible
-      WLR_NO_HARDWARE_CURSORS = lib.mkIf cfg.nvidia.enable "1"; # This doesn't work properly
+      # WLR_NO_HARDWARE_CURSORS = lib.mkIf cfg.nvidia.enable "1"; # This doesn't work properly
       # Hint electron apps to use wayland
       NIXOS_OZONE_WL = "1";
     };

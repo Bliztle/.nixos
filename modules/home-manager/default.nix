@@ -18,6 +18,7 @@
     ./hyprland/hyprland.nix
     ./kitty/kitty.nix
     ./neovim/neovim.nix
+    ./scripts
     ./waybar/waybar.nix
     ./work
     ./ssh.nix
