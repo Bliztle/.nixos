@@ -29,6 +29,9 @@ in
         caam = "!git add -A && commit -a --amend";
         co = "checkout";
         cob = "checkout -b";
+        d = "diff";
+        dh = "diff HEAD";
+        do = "diff origin/HEAD";
         p = "push";
         pb = "push --set-upstream origin HEAD";
         pf = "push --force-with-lease";

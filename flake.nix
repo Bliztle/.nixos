@@ -19,7 +19,7 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, ... }@inputs:
     {
-    
+
       nixosConfigurations = {
 
         # Get system from unstable on desktop

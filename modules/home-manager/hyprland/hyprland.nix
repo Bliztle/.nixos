@@ -32,6 +32,7 @@ in
   };
 
   config = {
+    xdg.configFile."hypr/hyprlock.conf".source = ./hyprlock.conf;
     wayland.windowManager.hyprland = {
       enable = true;
       # enableNvidiaPatches = true;

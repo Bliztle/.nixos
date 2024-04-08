@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, inputs, lib, config, ... }:
 
 {
   options = { };
@@ -48,6 +48,7 @@
         # git        # This should already be accessible from git.nix
         # github-cli # -||-
 
+        inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.hyprlock
 
         # Misc
         sl # TUU TUUUUUUUU
