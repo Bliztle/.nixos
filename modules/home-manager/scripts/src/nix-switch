@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Build and switch to new configuration, with git commit message containing generation number on device.
+set -e # quit if any command errors
+
+ngit() {
+    git -C ~/.nixos "$@"
+}
+
+GEN=$(nixos-rebuild list-generations | grep current)
+HOSTNAME=$(hostname)
+
+# If no changes, append last commit message
+if ngit diff HEAD --quiet; then
+    PREV=$(ngit log -1 --pretty=%B)
+    MESSAGE="($HOSTNAME #$GEN) $PREV"
+    ngit commit --amend -m $MESSAGE
+    ngit commit --amend
+fi
+
+ngit diff HEAD -U0
+
+echo "NixOS Rebuilding..."
+
+ngit add -A
+
+# Rebuild, output simplified errors, log trackebacks
+sudo nixos-rebuild switch --flake ~/.nixos &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+
+GEN=$(nixos-rebuild list-generations | grep current)
+
+ngit commit -am "$GEN"
+ngit commit --amend
+
+notify-send -e "NixOS Rebuilt OK" --icon=software-update-available
+
