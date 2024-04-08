@@ -19,6 +19,22 @@ in
         gpgPath = "${pkgs.gnupg}/bin/gpg";
       };
 
+      aliases = {
+        s = "status";
+        sw = "switch";
+        swc = "switch -c";
+        c = "commit -m";
+        ca = "!git add -A && git commit -m";
+        cam = "commit --amend";
+        caam = "!git add -A && commit -a --amend";
+        co = "checkout";
+        cob = "checkout -b";
+        p = "push";
+        pb = "push --set-upstream origin HEAD";
+        pf = "push --force-with-lease";
+        lg = "!git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30";
+      };
+
       extraConfig = {
         init = {
           defaultBranch = "main";
@@ -29,9 +45,6 @@ in
         core = {
           editor = "nvim";
         };
-        # commit = {
-        #   gpgsign = "true";
-        # };
         pager = {
           branch = "false";
         };
@@ -41,7 +54,10 @@ in
       };
 
       includes = [
-        { path = "~/${cfg-path}/includeif"; }
+        { 
+          path = "~/${cfg-path}/caretaker.gitconfig";
+          condition = "gitdir:~/work/caretaker/";
+        }
       ];
     };
 
@@ -50,19 +66,11 @@ in
       gitCredentialHelper.enable = false;
     };
 
-    home.file."${cfg-path}/includeif".text = ''
-    [includeIf "gitdir:~/work/caretaker/"]
-	    path = ~/.config/git/caretaker.gitconfig
-    '';
-
     # Gitdir included configuration
     home.file."${cfg-path}/caretaker.gitconfig".text = ''
       [user]
         name = Asbjørn Rysgaard Eriksen
         email = are@caretaker.dk
-
-      [core]
-        sshCommand = ssh -i ~/.ssh/id_rsa_sha2_512
     '';
   };
 }
