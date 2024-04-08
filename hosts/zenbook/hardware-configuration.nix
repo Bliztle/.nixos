@@ -8,15 +8,39 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4e89a6af-94ae-4a83-8bb7-d4f4e93b8242";
+    { device = "/dev/disk/by-uuid/6cddb426-ee14-4418-a351-e98508d40f27";
       fsType = "ext4";
     };
+
+  boot.initrd.luks = {
+    yubikeySupport = true;
+
+    devices."luks-e52a6f85-79d0-43ea-b7da-827ca12ea6da" = {
+      device = "/dev/disk/by-uuid/e52a6f85-79d0-43ea-b7da-827ca12ea6da";
+
+      yubikey = {
+        slot = 2;
+        twoFactor = true; # use shorter passphrase with the key
+        gracePeriod = 30; # Time to wait for key to be inserted
+        keyLength = 64; # $KEY_LENGTH / 8 from generation
+        saltLength = 16; # $SALT_LENGTH from generation
+
+        storage = {
+          device = "/dev/nvme0n1p1"; # Boot device on which initial challenge is stored
+          # device = "/dev/disk/by-uuid/88D2-3A6D"; # Boot device on which initial challenge is stored
+          # fsType and path follow defaults
+          # fsType = "vfat";
+          # path = "/crypt-storage/default" (on boot device)
+        };
+      };
+    };
+  };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/88D2-3A6D";

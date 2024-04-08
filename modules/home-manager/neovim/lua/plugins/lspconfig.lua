@@ -19,6 +19,8 @@ lspconfig.rust_analyzer.setup {
         ['rust-analyzer'] = {},
     },
 }
+-- Svelte
+lspconfig.svelteserver.setup {}
 -- Typescript
 lspconfig.tsserver.setup {}
 
