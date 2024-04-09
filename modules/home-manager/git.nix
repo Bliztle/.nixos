@@ -42,6 +42,10 @@ in
         rh = "reset --hard";
         rho = "reset --hard origin/HEAD";
         lg = "!git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30";
+
+        sub = "submodule";
+        sub-pull = "submodule foreach git pull";
+        sub-add = "submodule add -b main"; # Call with <repo> [<path>]
       };
 
       extraConfig = {
