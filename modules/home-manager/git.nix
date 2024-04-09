@@ -35,6 +35,12 @@ in
         p = "push";
         pb = "push --set-upstream origin HEAD";
         pf = "push --force-with-lease";
+        r = "reset";
+        ro = "reset origin/HEAD";
+        rs = "reset --soft";
+        rso = "reset --soft origin/HEAD";
+        rh = "reset --hard";
+        rho = "reset --hard origin/HEAD";
         lg = "!git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30";
       };
 
