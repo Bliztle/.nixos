@@ -29,6 +29,7 @@
           which-key-nvim
           catppuccin-nvim # Color scheme 
           vim-sleuth # Auto detect tabs
+          clangd_extensions-nvim # c/c++ integration
 
           # Git integration
           vim-fugitive

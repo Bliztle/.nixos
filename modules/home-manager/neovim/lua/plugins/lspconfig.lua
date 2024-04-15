@@ -5,9 +5,17 @@ local pid = vim.fn.getpid()
 -- Lua
 -- lspconfig.lua_language_server.setup {}
 
+-- c
+lspconfig.clangd.setup {}
 -- C#
 lspconfig.omnisharp.setup {
-    cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(pid) }
+    cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(pid) },
+    enable_roslyn_analyzers = true,
+    enable_import_completion = true
+}
+-- Haskell
+lspconfig.hsl.setup {
+    cmd = { 'haskell-language-server-wrapper', '--lsp' }
 }
 -- Lua
 lspconfig.lua_ls.setup {}

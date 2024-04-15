@@ -1,5 +1,7 @@
 { pkgs, inputs, lib, config, ... }:
-
+let
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+in
 {
   options = { };
   config = {
@@ -35,6 +37,7 @@
         vscode # Change to programs.vscode and set package to newest git version
         bitwarden
         expressvpn
+        # protonmail-bridge
         # thunderbird -- Look into using nix' email settings
 
         # Tools
@@ -48,7 +51,9 @@
         # git        # This should already be accessible from git.nix
         # github-cli # -||-
 
-        inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.hyprlock
+        unstable.hyprlock
+        unstable.hypridle
+        unstable.protonmail-desktop
 
         # Misc
         sl # TUU TUUUUUUUU
