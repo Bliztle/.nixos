@@ -24,7 +24,16 @@ lspconfig.nil_ls.setup {}
 -- Rust
 lspconfig.rust_analyzer.setup {
     settings = {
-        ['rust-analyzer'] = {},
+        ['rust-analyzer'] = {
+            -- checkOnSave = {
+            --     command = "cargo clippy -- -Wclippy::pedantic"
+            -- }
+            check = {
+                command = "clippy",
+                extraArgs = { "--", "-W", "clippy::pedantic" }
+                -- command = "clippy -- -W clippy::pedantic"
+            }
+        },
     },
 }
 -- Svelte

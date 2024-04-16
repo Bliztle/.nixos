@@ -50,6 +50,7 @@ in
         # monitor=",preferred,auto,auto";
         monitor = [
           "HDMI-A-1,1920x1080@60,2680x1440,1" # Asus
+          # "HDMI-A-1,1920x1080@60,2680x1440,1,mirror,DP-3" # Asus
           "DP-3,1920x1080@60,0x360,1" # Omen
           "DP-2,3440x1440@60,1920x0,1" # Wide AOC
           "DP-1,1920x1080@60,5360x0,1,transform,1" # Regular AOC
@@ -84,7 +85,7 @@ in
             # kb_rules =
         
             follow_mouse = "1";
-        
+
             touchpad = {
                 disable_while_typing="1";
                 natural_scroll="1";
@@ -95,7 +96,7 @@ in
         
             sensitivity = "0"; # -1.0 - 1.0, 0 means no modification.
         };
-        
+
         general = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
         
@@ -307,6 +308,23 @@ in
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ];
       };
+      
+      extraConfig = ''
+        device:elan-touchscreen {
+          # name = 
+          # touchdevice = {
+          output=DP-3
+          # }
+        }
+        device:elan-touchscreen-stylus {
+          # name = 
+          # tablet = {
+          output = DP-3
+          region_position = [1920, 0]
+          region_size = [1920, 1080]
+          # }
+        }
+        '';
     };
   };
 

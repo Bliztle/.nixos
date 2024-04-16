@@ -20,13 +20,17 @@ in
       };
 
       aliases = {
+        a = "add";
+        aa = "add -A";
         s = "status";
         sw = "switch";
         swc = "switch -c";
         c = "commit -m";
         ca = "!git add -A && git commit -m";
         cam = "commit --amend";
-        caam = "!git add -A && commit -a --amend";
+        camn = "commit --amend --no-edit";
+        caam = "!git add -A && git commit -a --amend";
+        caamn = "!git add -A && git commit -a --amend --no-edit";
         co = "checkout";
         cob = "checkout -b";
         d = "diff";
