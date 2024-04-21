@@ -3,10 +3,7 @@ vim.g.maplocalleader = " "
 vim.opt.clipboard = "unnamedplus"
 vim.cmd.colorscheme "catppuccin-mocha"
 
-vim.keymap.set('', 'jk', '<esc>', {})
-vim.keymap.set('!', 'jk', '<esc>', {})
-vim.keymap.set('t', 'jk', '<esc>', {})
-vim.keymap.set('l', 'jk', '<esc>', {})
+vim.keymap.set('i', 'jk', '<esc>', {})
 
 vim.keymap.set('n', '<C-h>', '<C-w>h', {})
 vim.keymap.set('n', '<C-j>', '<C-w>j', {})
