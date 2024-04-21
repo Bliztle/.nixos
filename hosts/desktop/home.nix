@@ -2,15 +2,15 @@
 
 {
   imports = [
-    ../../modules/unstable-hm.nix
+    ../../modules/stable-hm.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "bliztle";
 
   custom.nvidia.enable = true;
-  custom.unstable.enable = true;
 
+  custom.unstable.enable = false;
   custom.dev.enable = true;
   custom.work.enable = true;
 
