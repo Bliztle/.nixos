@@ -30,6 +30,7 @@
           catppuccin-nvim # Color scheme 
           vim-sleuth # Auto detect tabs
           clangd_extensions-nvim # c/c++ integration
+          copilot-vim
 
           # Git integration
           vim-fugitive
