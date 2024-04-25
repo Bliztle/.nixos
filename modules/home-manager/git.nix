@@ -26,6 +26,8 @@ in
         sw = "switch";
         swc = "switch -c";
         swn = "switch main";
+        st = "stash";
+        stp = "stash pop";
         c = "commit -m";
         ca = "add -A && git commit -m";
         cam = "commit --amend";
