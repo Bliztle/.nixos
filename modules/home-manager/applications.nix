@@ -43,6 +43,7 @@ in
         # Tools
         wl-clipboard
         wdisplays
+        unzip
         tldr
         bat
         ripgrep

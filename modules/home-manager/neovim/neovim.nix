@@ -11,10 +11,10 @@
       withNodeJs = true;
 
       plugins = with pkgs.vimPlugins; [
-	      lazy-nvim
-	      nvim-treesitter
-	      nvim-treesitter.withAllGrammars # What is this dark magic?
-	      nvim-treesitter-context # Sticky functions
+          lazy-nvim
+          nvim-treesitter
+          nvim-treesitter.withAllGrammars # What is this dark magic?
+          nvim-treesitter-context # Sticky functions
           auto-pairs
           nvim-ts-autotag
           nvim-surround # Surround with (ys | ds | cs){motion}{char}
@@ -31,6 +31,7 @@
           vim-sleuth # Auto detect tabs
           clangd_extensions-nvim # c/c++ integration
           copilot-vim
+          comment-nvim
 
           # Git integration
           vim-fugitive
