@@ -27,7 +27,7 @@ in
       dotnet-sdk_8
       omnisharp-roslyn
       # Javascript / Typescript
-      nodejs
+      nodePackages_latest.pnpm
       nodePackages_latest.typescript-language-server
       # Rust
       rustc
