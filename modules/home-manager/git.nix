@@ -25,7 +25,7 @@ in
         s = "status";
         sw = "switch";
         swc = "switch -c";
-        swm = "switch main";
+        swd = "!git switch `git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`";
         st = "stash";
         stp = "stash pop";
         c = "commit -m";
