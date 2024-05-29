@@ -32,6 +32,7 @@
           clangd_extensions-nvim # c/c++ integration
           copilot-vim
           comment-nvim
+          markdown-preview-nvim
 
           # Git integration
           vim-fugitive
