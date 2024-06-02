@@ -309,22 +309,22 @@ in
         ];
       };
       
-      extraConfig = ''
-        device:elan-touchscreen {
-          # name = 
-          # touchdevice = {
-          output=DP-3
-          # }
-        }
-        device:elan-touchscreen-stylus {
-          # name = 
-          # tablet = {
-          output = DP-3
-          region_position = [1920, 0]
-          region_size = [1920, 1080]
-          # }
-        }
-        '';
+    #   extraConfig = ''
+    #     device:elan-touchscreen {
+    #       # name = 
+    #       # touchdevice = {
+    #       output=DP-3
+    #       # }
+    #     }
+    #     device:elan-touchscreen-stylus {
+    #       # name = 
+    #       # tablet = {
+    #       output = DP-3
+    #       region_position = [1920, 0]
+    #       region_size = [1920, 1080]
+    #       # }
+    #     }
+    #     '';
     };
   };
 

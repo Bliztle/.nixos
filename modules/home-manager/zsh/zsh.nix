@@ -6,8 +6,10 @@
     # All configuration is done in program.zsh
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
       enableCompletion = true;
+      autosuggestion = {
+        enable = true;
+      };
       syntaxHighlighting = {
         enable = true;
       };

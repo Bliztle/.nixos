@@ -42,7 +42,7 @@
 
           # Lsp and completion
           # Individual LSPs are installed in project shells
-	      nvim-lspconfig
+          nvim-lspconfig
           luasnip # Snippet framework
           nvim-cmp # Auto complete
           cmp-nvim-lsp # Get completions from lsp
@@ -51,6 +51,7 @@
           lspkind-nvim # VSCode-like icons on completions
           nvim-dap # Debugger
           nvim-dap-ui # UI for Debugger
+          qmk-nvim # QMK integration
       ];
 
       extraPackages = with pkgs; [
