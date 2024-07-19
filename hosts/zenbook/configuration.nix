@@ -32,6 +32,11 @@ in
     yubico.u2f = true;
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   # Home manager
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
