@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   options = {};
@@ -33,6 +33,7 @@
           copilot-vim
           comment-nvim
           markdown-preview-nvim
+          image-nvim # Display images in kity / tmux
 
           # Git integration
           vim-fugitive
@@ -63,6 +64,11 @@
         # Other 
         editorconfig-checker
         shellcheck
+        imagemagick
+      ];
+
+      extraLuaPackages = ps: [
+        ps.magick
       ];
 
       extraLuaConfig = builtins.concatStringsSep "\n" ((map lib.strings.fileContents (import ./lua)) ++ []);

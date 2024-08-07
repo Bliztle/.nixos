@@ -53,7 +53,13 @@ in
       # Most wayland compositors need this
       # nvidia.modesetting.enable = cfg.nvidia.enable;
       # nvidia.modesetting.enable = cfg.nvidia.enable;
+      bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+      };
     };
+    services.blueman.enable = true;
+
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;

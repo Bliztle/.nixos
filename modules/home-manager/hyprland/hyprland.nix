@@ -78,7 +78,8 @@ in
         ];
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input = {
-            kb_layout = "dk";
+            kb_layout ="dk,us";
+            resolve_binds_by_sym = "1";
             # kb_variant =
             # kb_model =
             # kb_options =
@@ -180,6 +181,12 @@ in
         #     name = "epic-mouse-v0";
         #     sensitivity = "-1.5";
         # };
+
+        device = {
+            name = "zmk-project-corne42k-board";
+            kb_layout="us";
+            resolve_binds_by_sym = "1";
+        };
         
         # Example windowrule v0
         # windowrule = float, ^(kitty)$
