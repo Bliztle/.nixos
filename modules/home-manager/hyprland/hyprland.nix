@@ -154,11 +154,11 @@ in
             force_split = false;
         };
         
-        master = {
-            # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-            new_is_master = true;
-            new_on_top = true;
-        };
+        # master = {
+        #     # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+        #     new_is_master = true;
+        #     new_on_top = true;
+        # };
         
         gestures = {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
