@@ -50,6 +50,9 @@ in
         do = "diff origin";
         doh = "diff origin/HEAD";
         dom = "diff origin/main";
+        del = "branch -d";
+        der = "!_gder() { git push origin --delete $1; }; _gder";
+        delr = "!_gdelr() { git branch -d $1; git push origin --delete $1; }; _gdelr";
         p = "push";
         pb = "push --set-upstream origin HEAD";
         pf = "push --force-with-lease";

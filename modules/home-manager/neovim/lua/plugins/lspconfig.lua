@@ -1,6 +1,21 @@
 local lspconfig = require('lspconfig')
 local pid = vim.fn.getpid()
 
+-- local on_attach = function(client, bufnr)
+--     if client.server_capabilities.document_highlight then
+--         vim.api.nvim_exec([[
+--             -- hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
+--             -- hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
+--             -- hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
+--             augroup lsp_document_highlight
+--                 autocmd! * <buffer>
+--                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+--                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+--             augroup END
+--         ]], false)
+--     end
+-- end
+
 -- Language servers
 -- Lua
 -- lspconfig.lua_language_server.setup {}
@@ -17,6 +32,13 @@ lspconfig.omnisharp.setup {
 lspconfig.hsl.setup {
     cmd = { 'haskell-language-server-wrapper', '--lsp' }
 }
+-- JavaScript / Typescript
+lspconfig.tsserver.setup {}
+lspconfig.eslint.setup {}
+lspconfig.svelte.setup {}
+vim.g['prettier#autoformat'] = 0
+vim.g['prettier#autoformat_require_pragma'] = 0
+vim.g['prettier#autoformat_config_present'] = 1
 -- Lua
 lspconfig.lua_ls.setup {}
 -- Nix
@@ -36,10 +58,6 @@ lspconfig.rust_analyzer.setup {
         },
     },
 }
--- Svelte
-lspconfig.svelte.setup {}
--- Typescript
-lspconfig.tsserver.setup {}
 
 -- Global mappings
 vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
@@ -56,6 +74,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Buffer local mappings
         -- See :help vim.lsp.* for documentation
         local opts = { buffer = ev.buf }
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -71,5 +90,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>f', function()
             vim.lsp.buf.format { async = true }
         end, opts)
+        if client.server_capabilities.document_highlight then
+            vim.api.nvim_exec([[
+                hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
+                hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
+                hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
+                augroup lsp_document_highlight
+                    autocmd! * <buffer>
+                    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                    autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+                    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+                augroup END
+            ]], false)
+        end
     end,
 })

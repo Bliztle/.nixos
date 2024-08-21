@@ -10,6 +10,9 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', {})
 vim.keymap.set('n', '<C-k>', '<C-w>k', {})
 vim.keymap.set('n', '<C-l>', '<C-w>l', {})
 
+-- trigger CursorHold faster. Default is 4000
+vim.opt.updatetime = 300
+
 vim.opt.nu = true
 vim.opt.rnu = true
 

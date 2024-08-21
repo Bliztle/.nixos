@@ -52,6 +52,7 @@
           lspkind-nvim # VSCode-like icons on completions
           nvim-dap # Debugger
           nvim-dap-ui # UI for Debugger
+          vim-prettier # Prettier integration
           qmk-nvim # QMK integration
       ];
 
